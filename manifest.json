@@ -2,5 +2,14 @@
   "manifest_version": 3,
   "name": "r/AmITheAsshole Guessing Game",
   "version": "1.0.0",
-  "action": { "default_popup": "index.html" }
+  "action": { "default_popup": "index.html" },
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "js": ["src/tally-votes.ts"],
+      "matches": ["*://*.reddit.com/r/AmItheAsshole/comments/*"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": { "service_worker": "src/background.ts" }
 }
