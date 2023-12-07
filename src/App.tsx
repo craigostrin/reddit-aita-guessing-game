@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Tally } from './types'
+import { Tally } from './lib/types'
 
 const initialState: Tally = {
   NTA: 0,

@@ -14,6 +14,9 @@ export type Tally = {
   NAH: number
 }
 
+export type PostId = string
+export type ButtonId = `${PostId}-${Vote}`
+
 //* Main votes to count
 // YTA = You're the Asshole;
 // NTA = Not the A-hole (and the other person is);

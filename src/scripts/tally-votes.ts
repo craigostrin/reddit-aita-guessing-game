@@ -1,4 +1,4 @@
-import { Tally, Vote } from '../types'
+import { Tally, Vote } from '../lib/types'
 
 const tally: Tally = {
   YTA: 0,
