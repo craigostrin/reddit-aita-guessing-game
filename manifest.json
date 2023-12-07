@@ -6,10 +6,18 @@
   "permissions": ["activeTab"],
   "content_scripts": [
     {
-      "js": ["src/tally-votes.ts"],
+      "js": ["src/scripts/vote-buttons.ts"],
+      "matches": [
+        "*://*.reddit.com/r/AmItheAsshole/",
+        "*://*.reddit.com/r/AITAH/"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "js": ["src/scripts/tally-votes.ts"],
       "matches": ["*://*.reddit.com/r/AmItheAsshole/comments/*"],
       "run_at": "document_end"
     }
   ],
-  "background": { "service_worker": "src/background.ts" }
+  "background": { "service_worker": "src/scripts/background.ts" }
 }

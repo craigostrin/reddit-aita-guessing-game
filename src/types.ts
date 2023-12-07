@@ -1,6 +1,15 @@
+export const VOTES = {
+  NTA: 'Not the asshole',
+  YTA: "You're the asshole",
+  ESH: 'Everyone sucks here',
+  NAH: 'No assholes here',
+} as const
+
+export type Vote = keyof typeof VOTES
+
 export type Tally = {
-  YTA: number
   NTA: number
+  YTA: number
   ESH: number
   NAH: number
 }

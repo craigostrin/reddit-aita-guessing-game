@@ -1,4 +1,4 @@
-import { Tally } from './types'
+import { Tally, Vote } from '../types'
 
 const tally: Tally = {
   YTA: 0,
@@ -7,7 +7,7 @@ const tally: Tally = {
   NAH: 0,
 }
 
-const VOTES = Object.keys(tally) as (keyof typeof tally)[]
+const VOTES = Object.keys(tally) as Vote[]
 
 console.log("Looks like you're on r/AmITheAsshole")
 console.log(`Let's count these votes: ${VOTES}`)
