@@ -1,10 +1,19 @@
 import { Tally, Vote } from '../lib/types'
+import { getPostIdFromUrl } from '../lib/utils'
 
+const url = location.href
+const postId = getPostIdFromUrl(url)
+
+const playerVote = await chrome.storage.local.get(postId)
+if (playerVote) console.log('✅✅✅✅✅', playerVote)
+
+// 🆒 HACK
+// Default to -1 to account for the sidebar
 const tally: Tally = {
-  YTA: 0,
-  NTA: 0,
-  ESH: 0,
-  NAH: 0,
+  YTA: -1,
+  NTA: -1,
+  ESH: -1,
+  NAH: -1,
 }
 
 const VOTES = Object.keys(tally) as Vote[]
@@ -19,9 +28,7 @@ const nodes = document.querySelectorAll('.usertext-body > div > p')
 
 //TODO exclude sidebar
 const comments = Array.from(nodes, (node) => node.textContent)
-console.log(comments)
 const start = Date.now()
-console.log(start)
 
 comments.forEach((comment) => {
   VOTES.forEach((key) => {
@@ -30,7 +37,6 @@ comments.forEach((comment) => {
 })
 
 const finish = Date.now()
-console.log(finish)
 
 console.log('The votes come to:')
 console.log(tally)
