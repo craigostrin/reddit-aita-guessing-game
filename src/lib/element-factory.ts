@@ -37,9 +37,16 @@ function createVoteButton(
   button.style.fontWeight = '600'
   button.style.borderRadius = '0.375rem'
 
-  button.onclick = () => {
+  button.onclick = async () => {
     const { postId, vote } = parseButtonId(button.id as ButtonId)
-    alert('postId: ' + postId + ', vote: ' + vote)
+    const record = await chrome.storage.local.get([postId])
+    if (record[postId] === 'WIN' || record[postId] === 'LOSE') {
+      alert('Already guessed!')
+      return
+    }
+
+    await chrome.storage.local.set({ [postId]: vote })
+    console.log(`Voted on ${postId}: ${vote}`)
   }
 
   return button
